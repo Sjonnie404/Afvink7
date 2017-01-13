@@ -3,9 +3,9 @@
 
 
 def main():
-    getSequentie()
+    seq = getSequentie()
     isDNA(seq)
-    RNAconvert(seq)
+    rna = RNAconvert(seq)
     StartStop(rna)
 
 def getSequentie():
@@ -78,6 +78,6 @@ def StartStop(rna):
     print ("Eerst volgende stopcodon:\t",realStop) #Dit kiest de laagste stopcodon
 
     compstr = gene[start:realStop]
-    return compstr
     print ("Transcriptie van RNA: ",compstr)
+    return compstr
 main()
