@@ -4,12 +4,13 @@
 
 def main():
     getSequentie()
-    isDNA()
-    RNAconvert()
-    StartStop()
+    isDNA(seq)
+    RNAconvert(seq)
+    StartStop(rna)
 
 def getSequentie():
     #sequentie bestand opvragen
+    print("-" *80)
     getBestand = input("Geef de naam van je bestand op.")
     gene = open(getBestand,"r")
     print (getBestand)
@@ -19,9 +20,9 @@ def getSequentie():
     for c in gene:
         seq = seq + c
     seq = seq.replace("\n","")  #Dit zorgt ervoor dat de enters worden weggehaald
-    global seq
+    return seq
 
-def isDNA():
+def isDNA(seq):
     gene = seq
     DNA = True
     
@@ -33,7 +34,7 @@ def isDNA():
                char != "a" and\
                char != "t" and\
                char != "n":             #Dit is voor sommige sequencies die niet volledig gesequenced zijn.
-                DNA = False
+                   DNA = False
     print ("")
     if DNA == True:
         print ("Dit is DNA.")
@@ -41,11 +42,11 @@ def isDNA():
         print ("Dit is geen DNA")
     print ("")
 
-def RNAconvert():
+def RNAconvert(seq):
     rna = seq.replace("T","U")
-    global rna
+    return rna
 
-def StartStop():
+def StartStop(rna):
     gene = rna
     start = gene.find("AUG")
 
@@ -74,9 +75,9 @@ def StartStop():
     realStop = L.index(min(L))  #het stopcodon moet altijd groter zijn dan het startcodon
     realStop = L[realStop]
     print ("Eerste startcodon:\t",start)
-    print ("Eerst volgende stopcodon",realStop) #Dit kiest de laagste stopcodon
+    print ("Eerst volgende stopcodon:\t",realStop) #Dit kiest de laagste stopcodon
 
     compstr = gene[start:realStop]
-    global compstr
+    return compstr
     print ("Transcriptie van RNA: ",compstr)
 main()
